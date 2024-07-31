@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/quran/sura_datails_screen.dart';
+import 'package:islamiapp/bottom_navigation_bar.dart/setting/setting_provider.dart';
 import 'package:islamiapp/theme.dart';
+import 'package:provider/provider.dart';
 
 class QuranTap extends StatelessWidget {
   List<String> SurasName = [
@@ -237,6 +239,7 @@ class QuranTap extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    SettingProvider settingProvider = Provider.of<SettingProvider>(context);
     return Column(
       children: [
         Image.asset(
@@ -246,8 +249,10 @@ class QuranTap extends StatelessWidget {
         SizedBox(
           height: 12,
         ),
-        const Divider(
-          color: AppTheme.primary, // لون الخط
+        Divider(
+          color: settingProvider.themeMode == ThemeMode.light
+              ? AppTheme.primarylight
+              : AppTheme.gold, // لون الخط
           height: 20, // المسافة العمودية حول الخط
           thickness: 2, // سمك الخط
           indent: 0, // المسافة البادئة من اليسار
@@ -255,10 +260,12 @@ class QuranTap extends StatelessWidget {
         ),
         Text(
           "إسم السورة",
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        const Divider(
-          color: AppTheme.primary, // لون الخط
+        Divider(
+          color: settingProvider.themeMode == ThemeMode.light
+              ? AppTheme.primarylight
+              : AppTheme.gold, // لون الخط
           height: 20, // المسافة العمودية حول الخط
           thickness: 2, // سمك الخط
           indent: 0, // المسافة البادئة من اليسار
@@ -277,12 +284,12 @@ class QuranTap extends StatelessWidget {
               children: [
                 Text(
                   SurasNum[index],
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   SurasName[index],
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
               ],

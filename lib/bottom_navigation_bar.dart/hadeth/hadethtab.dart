@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/quran/sura_datails_screen.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/hadeth/hadeth.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/hadeth/hadeth_datails.dart';
+import 'package:islamiapp/bottom_navigation_bar.dart/setting/setting_provider.dart';
 import 'package:islamiapp/theme.dart';
 import 'package:islamiapp/widget/loding_indecator.dart';
+import 'package:provider/provider.dart';
 
 class HadethTap extends StatefulWidget {
   @override
@@ -18,6 +20,8 @@ class _HadethTapState extends State<HadethTap> {
     if (ahadeth.isEmpty) {
       loadahadethfail();
     }
+    SettingProvider settingProvider = Provider.of<SettingProvider>(context);
+
     return Column(
       children: [
         Image.asset(
@@ -27,8 +31,10 @@ class _HadethTapState extends State<HadethTap> {
         SizedBox(
           height: 12,
         ),
-        const Divider(
-          color: AppTheme.primary, // لون الخط
+        Divider(
+          color: settingProvider.themeMode == ThemeMode.light
+              ? AppTheme.primarylight
+              : AppTheme.gold, // لون الخط
           height: 20, // المسافة العمودية حول الخط
           thickness: 2, // سمك الخط
           indent: 0, // المسافة البادئة من اليسار
@@ -36,14 +42,16 @@ class _HadethTapState extends State<HadethTap> {
         ),
         Text(
           "إسم الحديث",
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        const Divider(
-          color: AppTheme.primary, // لون الخط
-          height: 20, // المسافة العمودية حول الخط
-          thickness: 2, // سمك الخط
-          indent: 0, // المسافة البادئة من اليسار
-          endIndent: 0, // المسافة البادئة من اليمين
+        Divider(
+          color: settingProvider.themeMode == ThemeMode.light
+              ? AppTheme.primarylight
+              : AppTheme.gold,
+          height: 20,
+          thickness: 2,
+          indent: 0,
+          endIndent: 0,
         ),
         Expanded(
             child: ahadeth.isEmpty
@@ -58,7 +66,7 @@ class _HadethTapState extends State<HadethTap> {
                       },
                       child: Text(
                         ahadeth[index].title,
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context).textTheme.titleLarge,
                         textAlign: TextAlign.center,
                       ),
                     ),

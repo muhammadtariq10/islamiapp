@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/hadeth/hadethtab.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/quran/quran.dart';
-import 'package:islamiapp/radio/radio.dart';
+import 'package:islamiapp/bottom_navigation_bar.dart/radio/radio.dart';
 import 'package:islamiapp/bottom_navigation_bar.dart/sebha/sebha.dart';
-import 'package:islamiapp/bottom_navigation_bar.dart/setting.dart';
+import 'package:islamiapp/bottom_navigation_bar.dart/setting/setting_provider.dart';
+import 'package:islamiapp/bottom_navigation_bar.dart/setting/setting_tap.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -19,20 +22,25 @@ class _HomeScreenState extends State<HomeScreen> {
     SebhaTap(),
     QuranTap(),
     HadethTap(),
-    Setting(),
+    SettingTap(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider settingProvider = Provider.of<SettingProvider>(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/default_bg.png"),
+              image: AssetImage(
+                settingProvider.themeMode == ThemeMode.light
+                    ? "assets/images/default_bg.png"
+                    : "assets/images/dark_bg.png",
+              ),
               fit: BoxFit.cover)),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("إسلامي"),
+          title: Text(AppLocalizations.of(context)!.islami),
           centerTitle: true,
         ),
         backgroundColor: Colors.transparent,

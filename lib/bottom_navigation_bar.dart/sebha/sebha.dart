@@ -32,9 +32,11 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:islamiapp/bottom_navigation_bar.dart/setting/setting_provider.dart';
 import 'dart:math' as math;
 
 import 'package:islamiapp/theme.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTap extends StatefulWidget {
   @override
@@ -71,6 +73,7 @@ class _SebhaTapState extends State<SebhaTap> {
 
   @override
   Widget build(BuildContext context) {
+    SettingProvider settingProvider = Provider.of<SettingProvider>(context);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
@@ -86,8 +89,11 @@ class _SebhaTapState extends State<SebhaTap> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: AppTheme.primary,
-                borderRadius: BorderRadius.circular(25)),
+              color: settingProvider.themeMode == ThemeMode.light
+                  ? AppTheme.primarylight
+                  : AppTheme.gold,
+              borderRadius: BorderRadius.circular(25),
+            ),
             height: MediaQuery.of(context).size.height * 0.08,
             width: MediaQuery.of(context).size.width * 0.30,
             child: Center(
@@ -100,8 +106,11 @@ class _SebhaTapState extends State<SebhaTap> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: AppTheme.primary,
-                borderRadius: BorderRadius.circular(25)),
+              color: settingProvider.themeMode == ThemeMode.light
+                  ? AppTheme.primarylight
+                  : AppTheme.gold,
+              borderRadius: BorderRadius.circular(25),
+            ),
             height: MediaQuery.of(context).size.height * 0.08,
             width: MediaQuery.of(context).size.width * 0.30,
             child: Center(
@@ -130,8 +139,10 @@ class _SebhaTapState extends State<SebhaTap> {
                 onTap: _rotateImage,
                 child: Transform.rotate(
                   angle: _rotation,
-                  child: Image.asset(
-                      'assets/images/Group 9.png'), // تأكد من أن المسار إلى صورتك صحيح
+                  child: Image.asset(settingProvider.themeMode ==
+                          ThemeMode.light
+                      ? 'assets/images/Group 9.png'
+                      : 'assets/images/Group 9dark.png'), // تأكد من أن المسار إلى صورتك صحيح
                 ),
               ),
             ),
