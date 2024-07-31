@@ -64,6 +64,9 @@ class _SuraDatailsScreenState extends State<SuraDatailsScreen> {
                   indent: 0, // المسافة البادئة من اليسار
                   endIndent: 0, // المسافة البادئة من اليمين
                 ),
+                const SizedBox(
+                  height: 8,
+                ),
                 Expanded(
                     child: ayat.isEmpty
                         ? LodingIndecator()

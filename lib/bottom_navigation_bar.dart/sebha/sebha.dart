@@ -90,8 +90,8 @@ class _SebhaTapState extends State<SebhaTap> {
           Container(
             decoration: BoxDecoration(
               color: settingProvider.themeMode == ThemeMode.light
-                  ? AppTheme.primarylight
-                  : AppTheme.gold,
+                  ? AppTheme.primarylight.withOpacity(0.7)
+                  : AppTheme.primarydark,
               borderRadius: BorderRadius.circular(25),
             ),
             height: MediaQuery.of(context).size.height * 0.08,
@@ -114,8 +114,14 @@ class _SebhaTapState extends State<SebhaTap> {
             height: MediaQuery.of(context).size.height * 0.08,
             width: MediaQuery.of(context).size.width * 0.30,
             child: Center(
-              child: Text(sebhaNam[_currensebhanameIndex],
-                  style: Theme.of(context).textTheme.titleLarge),
+              child: Text(
+                sebhaNam[_currensebhanameIndex],
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: settingProvider.themeMode == ThemeMode.light
+                          ? AppTheme.white
+                          : AppTheme.black,
+                    ),
+              ),
             ),
           ),
           SizedBox(

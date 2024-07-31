@@ -25,6 +25,8 @@ class AppTheme {
     primaryColor: primarylight,
     scaffoldBackgroundColor: Colors.transparent,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
       type: BottomNavigationBarType.fixed,
       backgroundColor: primarylight,
       selectedItemColor: black,
@@ -58,6 +60,8 @@ class AppTheme {
       backgroundColor: primarydark,
       selectedItemColor: gold,
       unselectedItemColor: white,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
     ),
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStatePropertyAll(AppTheme.white),

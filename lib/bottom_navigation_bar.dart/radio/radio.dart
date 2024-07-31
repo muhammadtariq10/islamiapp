@@ -32,9 +32,13 @@ class RadioTap extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {},
-                child: Image.asset(settingProvider.themeMode == ThemeMode.light
-                    ? "assets/images/Icon metro-next.png"
-                    : "assets/images/Icon metro-next-dark.png"),
+                child: Image.asset(
+                    settingProvider.language == "en"
+                        ? "assets/images/Icon metro-next.png"
+                        : "assets/images/Icon metro-next-dark-tow.png",
+                    color: settingProvider.themeMode == ThemeMode.light
+                        ? AppTheme.primarylight
+                        : AppTheme.gold),
               ),
               InkWell(
                 onTap: () {},
@@ -46,9 +50,14 @@ class RadioTap extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {},
-                child: Image.asset(settingProvider.themeMode == ThemeMode.light
-                    ? "assets/images/Icon metro-nexttow.png"
-                    : "assets/images/Icon metro-next-dark-tow.png"),
+                child: Image.asset(
+                  settingProvider.language == "en"
+                      ? "assets/images/Icon metro-next-dark-tow.png"
+                      : "assets/images/Icon metro-next.png",
+                  color: settingProvider.themeMode == ThemeMode.light
+                      ? AppTheme.primarylight
+                      : AppTheme.gold,
+                ),
               ),
             ],
           ),

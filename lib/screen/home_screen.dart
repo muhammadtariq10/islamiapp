@@ -53,23 +53,46 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
+                icon: ImageIcon(
+                  AssetImage(
+                    "assets/images/icon_radio.png",
+                  ),
+                  size: 32,
+                ),
                 label: "Radio",
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),
+                icon: ImageIcon(
+                  AssetImage(
+                    "assets/images/icon_sebha.png",
+                  ),
+                  size: 32,
+                ),
                 label: "Sebha",
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),
+                icon: ImageIcon(
+                  AssetImage(
+                    "assets/images/icon_quran.png",
+                  ),
+                  size: 32,
+                ),
                 label: "Quran",
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
+                icon: ImageIcon(
+                  AssetImage(
+                    "assets/images/icon_hadeth.png",
+                  ),
+                  size: 32,
+                ),
                 label: "Hadeth",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings_outlined),
+                icon: Icon(
+                  Icons.settings_outlined,
+                  size: 30,
+                ),
                 label: "Settings",
               ),
             ]),
